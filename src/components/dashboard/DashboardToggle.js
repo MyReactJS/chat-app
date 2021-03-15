@@ -14,7 +14,7 @@ const DashboardToggle = () => {
     }, [close]);
     const isMobile = useMediaQuery('(max-Width: 992 px)');
     return (
-        <div>
+        <div >
             <Button block color="blue" onClick={open}>
                 <Icon icon="dashboard"/> Dashboard
             </Button>
