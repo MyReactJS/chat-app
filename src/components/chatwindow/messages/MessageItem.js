@@ -12,10 +12,22 @@ import ImgBtnModal from './ImgBtnModal';
 
 const renderFileMessage = (file) => {
     if (file.contentType.includes('image')) {
+        
         return <div className="height-220">
             
             <ImgBtnModal src={file.url} fileName={file.name} /> 
                 </div>
+    }
+    if (file.contentType.includes('audio')) {
+        // console.log("audio");
+        return (
+            // eslint-disable-next-line jsx-a11y/media-has-caption
+            <audio controls>
+            <source src={file.url} type="audio/mp3" />
+            Your browser does not support the audio element
+            </audio>
+        )
+                
     }
 
     return <a href={file.url}> Download {file.name} </a>
@@ -38,7 +50,6 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
     const isLiked = likes && Object.keys(likes).includes(auth.currentUser.uid);
 
     // console.log('isMessageAuthorAdmin', isMessageAuthorAdmin)
-
     return (
         <li className={`padded mb-1 cursor-pointer ${isHovered ? 'bg-black-02' : ''} `} ref={selfRef}>
             <div className="d-flex align-items-center font-bolder mb-1">
@@ -69,13 +80,13 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
                         isVisible={canShowIcons}
                         iconName="close"
                         tooltip="Delete this message"
-                        onClick={() => handleDelete(message.id)}
+                        onClick={() => handleDelete(message.id,file)}
                         
                     />
                 )}
             </div>
             <div>
-                {text &&
+            {text &&
                     <span className="word-breal-all"> {text} </span>
                 }
                 {file &&
