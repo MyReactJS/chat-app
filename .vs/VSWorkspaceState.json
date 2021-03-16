@@ -1,15 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\public",
     "\\src",
     "\\src\\components",
+    "\\src\\components\\chatwindow",
+    "\\src\\components\\chatwindow\\messages",
     "\\src\\components\\dashboard",
     "\\src\\components\\rooms",
     "\\src\\context",
     "\\src\\misc",
     "\\src\\pages"
   ],
-  "SelectedNode": "\\src\\components\\rooms\\ChatRoomList.js",
   "PreviewInSolutionExplorer": false
 }

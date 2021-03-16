@@ -2,15 +2,23 @@ import React, { useCallback } from 'react';
 import { Button, Drawer, Icon , Alert} from 'rsuite';
 import Dashboard from '.';
 import { useMediaQuery, useModelState } from '../../misc/custom-hooks';
-import { auth } from '../../misc/firebase';
+import { auth, database } from '../../misc/firebase';
+import { isOfflineForDatabase } from '../../context/profile.context';
 
 const DashboardToggle = () => {
     const { isOpen, open, close } = useModelState();
     const onSignOut = useCallback(() => {
-
-        auth.signOut();
-        Alert.info('Signed Out', 5000);
-        close();
+        database.ref(`/status/${auth.currentUser.uid}`).set(isOfflineForDatabase).then(() => {
+            auth.signOut();
+            Alert.info('Signed Out', 5000);
+            close();
+        })
+            .catch(err => {
+                Alert.error(err.message);
+            });
+        
+       
+        
     }, [close]);
     const isMobile = useMediaQuery('(max-Width: 992 px)');
     return (
