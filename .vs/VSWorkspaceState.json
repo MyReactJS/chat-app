@@ -4,12 +4,12 @@
     "\\src",
     "\\src\\components",
     "\\src\\components\\chatwindow",
-    "\\src\\components\\chatwindow\\messages",
-    "\\src\\components\\dashboard",
-    "\\src\\components\\rooms",
+    "\\src\\components\\chatwindow\\top",
     "\\src\\context",
     "\\src\\misc",
-    "\\src\\pages"
+    "\\src\\pages",
+    "\\src\\pages\\home"
   ],
+  "SelectedNode": "\\src\\App.js",
   "PreviewInSolutionExplorer": false
 }
